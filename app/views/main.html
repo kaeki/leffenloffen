@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-12">
+    <button class="btn btn-primary" ng-click="showTheatres()">Näytä Teatterit</button>
+  </div>
+  <div class="col-sm-12" ng-if="clicked">
+    <h3>Teatterit<h3>
+      <ul>
+        <li ng-repeat="theatreArea in theatreAreas">
+              <h4>{{theatreArea.Name}}</h4>
+              <p>{{theatreArea.ID}}</p>
+            <hr>
+        </li>
+      </ul>
+  </div>
+  <br>
+  <br>
+</div>
