@@ -9,6 +9,7 @@
  */
 angular.module('leffenloffenApp')
   .controller('MainCtrl', function ($scope, ajaxFactory) {
-
-
+  	angular.element('#leffat').click( function() {
+  		angular.element('#jumbo').slideUp(400);
+  	});
   });

@@ -8,6 +8,7 @@
  *
  * Main module of the application.
  */
+
 angular
   .module('leffenloffenApp', [
     'ngAnimate',
@@ -27,6 +28,11 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
+      })
+      .when('/events', {
+        templateUrl: 'views/events.html',
+        controller: 'eventsCtrl',
+        controllerAs: 'events'
       })
       .otherwise({
         redirectTo: '/'

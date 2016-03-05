@@ -1,0 +1,40 @@
+<div>
+	<h3>{{teatteriName}}</h3>
+	<div class="carousel" id="slider">
+
+	    <label class="labelSecurity">Elokuvat</label><br/>
+
+	    <div class="carousel-inner">
+	        <div class="item" ng-class="{active:!$index}" ng-repeat="movie in eventsArray.Event">
+	        	<div class="row">
+	        		<div class="col-xs-4">
+			        	<img src="{{movie.Images.EventSmallImagePortrait}}" width="100%">
+			        </div>
+			        <div class="col-xs-8">	
+			        	<h3>{{movie.Title}}</h3>
+			        	<img src="{{movie.RatingImageUrl}}" width="30px">
+			        	<span ng-repeat="content in movie.ContentDescriptors.ContentDescriptor">
+			        		<img src="{{content.ImageURL}}" alt="{{content.Name}}" witdth="25px">
+			        	</span>
+			        	<p><strong>Julkaistu:</strong> {{movie.ProductionYear}}</p>
+			        	<p><strong>Genre:</strong> {{movie.Genres}}</p>
+			        </div>
+	        	</div>
+	        	<div class="col-xs-12">
+	        		<hr>
+		        	<p><strong>Kesto:</strong> {{movie.LengthInMinutes}} min</p>
+		        	<hr>
+		        	<p id="actors"><strong>Pääosissa:</strong> <span ng-repeat="actor in movie.Cast.Actor">{{actor.FirstName}} {{actor.LastName}}, </span></p>
+		        	<hr>
+	            	<p>{{movie.ShortSynopsis}}</p>
+	            	<a href={{movie.EventURL}}>Tästä FinnKinon sivulle</a>
+	        	</div>
+	        </div>
+	    </div>
+
+	    <a class="left carousel-control" href="" ng-click="slide('prev')" role="button" data-slide="prev">
+	    </a>
+	    <a class="right carousel-control" ng-click="slide('next')" role="button" data-slide="next">
+	    </a>
+	</div>
+</div>

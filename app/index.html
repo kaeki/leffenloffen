@@ -46,31 +46,35 @@
     </div>
 
     <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from Atte</p>
+      <div class="container" style="text-align: center">
+        <p>From Atte with <span class="glyphicon glyphicon-heart"></span></p>
       </div>
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src='bower_components/jquery/dist/jquery.js'></script>
+    <script src='bower_components/angular/angular.js'></script>
+    <script src='bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js'></script>
+    <script src='bower_components/angular-animate/angular-animate.js'></script>
+    <script src='bower_components/angular-resource/angular-resource.js'></script>
+    <script src='bower_components/angular-route/angular-route.js'></script>
+    <script src='bower_components/angular-sanitize/angular-sanitize.js'></script>
+    <script src='bower_components/angular-touch/angular-touch.js'></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/services/ajaxFactory.js"></script>
+        <script src="scripts/services/teatteriService.js"></script>
+        <script src="scripts/leffat/eventsCtrl.js"></script>
+        <script src="scripts/leffat/events.js"></script>
+        <script src="scripts/teatteri/teatteriCtrl.js"></script>
+        <script src="scripts/teatteri/teatteri.js"></script>
         <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/services/ajaxFactory.js"</script>
-        <script src="scripts/teatteri/teatteri.js"</script>
-        <script src="scripts/teatteri/teatteriCtrl.js"</script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src='//maps.googleapis.com/maps/api/js'></script>
         <!-- endbuild -->
 </body>
 </html>

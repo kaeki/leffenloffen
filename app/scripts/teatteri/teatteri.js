@@ -1,10 +1,12 @@
+
 'use strict';
 
-angular.module('leffenloffenApp')
-	.directive('teatteri', function() {
-		return {
-			restrict: 'E',
-			templateUrl: 'scripts/teatteri/teatteri.html'
-		};
-	});
-
+angular
+  .module('leffenloffenApp')
+    .directive('teatterit', function() {
+    	console.log('tirehtööri');
+        return {
+            restrict: 'E',
+            templateUrl: 'scripts/teatteri/teatteri.html'
+        };
+});
