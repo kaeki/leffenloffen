@@ -6,6 +6,6 @@ angular
     .directive('leffat', function() {
         return {
             restrict: 'E',
-            templateUrl: 'scripts/leffat/events.html'
+            templateUrl: 'views/events.html'
         };
 });

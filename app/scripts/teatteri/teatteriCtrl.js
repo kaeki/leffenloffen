@@ -35,20 +35,24 @@ angular.module('leffenloffenApp')
         console.log(teatteriService.area);
     };
 
-    $scope.getLocation = function() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-
-        } else {
-            $scope.fail = true;
-        }
-    };
-    var showPosition = function(position) {
+    var onSuccess = function(position) {
         teatteriService.setVariable('lat', position.coords.latitude);
         teatteriService.setVariable('lon', position.coords.longitude);
         teatteriService.setVariable('locate', true);
         $scope.locate = teatteriService.locate;
         console.log(teatteriService.lat+", "+teatteriService.lon);
     };
+    var onError = function(error) {
+    alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+    };
+
+    $scope.getLocation = function() {
+        console.log('lol');
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        }
+    };
+
 });
 

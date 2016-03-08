@@ -1,7 +1,9 @@
 <div id="karuselli">
 	<h3>{{teatteriName}}</h3>
 
-<ul rn-carousel rn-carousel-buffered class="my-slider">
+<ul rn-carousel
+        rn-carousel-index="carouselIndex"
+        rn-carousel-buffered rn-carousel-buffered class="my-slider">
 	<div rn-carousel-indicators ng-if="eventsArray.length > 1" slides="eventsArray" rn-carousel-index="carouselIndex">
 	</div>
 	        <li ng-repeat="movie in eventsArray">

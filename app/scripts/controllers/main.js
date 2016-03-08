@@ -8,7 +8,8 @@
  * Controller of the leffenloffenApp
  */
 angular.module('leffenloffenApp')
-  .controller('MainCtrl', function ($scope, ajaxFactory) {
-
-  		
+  .controller('MainCtrl', function ($scope, $route) {
+		$scope.reloadRoute = function() {
+		   $route.reload();
+		};
   });

@@ -7,6 +7,6 @@ angular
     	console.log('tirehtööri');
         return {
             restrict: 'E',
-            templateUrl: 'scripts/teatteri/teatteri.html'
+            templateUrl: 'views/teatteri.html'
         };
 });

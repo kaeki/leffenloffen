@@ -2,7 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>LeffenLoffen</title>
+    <script>
+      document.addEventListener('backbutton', function(event){
+        event.preventDefault(); // EDIT
+        navigator.app.exitApp(); // exit the app
+      });
+      document.addEventListener("deviceready", onDeviceReady, false);
+      function onDeviceReady() {
+        console.log("navigator.geolocation works well");
+      };
+    </script>
+    <script src="cordova.js"></script>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -21,12 +32,12 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <div class="header" ng-controller="MainCtrl">
       <div class="navbar navbar-inverse navbar-static-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
 
-            <a class="navbar-brand" href="#/"><span class="glyphicon glyphicon-film"></span> LeffenLoffen</a>
+            <a class="navbar-brand" href="#/" ng-click="reloadRoute()"><span class="glyphicon glyphicon-film"></span> LeffenLoffen</a>
             <div class="dropdown pull-right" id="menuBtn">
               <button id="menu"class="btn btn-inverse dropdown-toggle" type="button" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-th-list"></span>
