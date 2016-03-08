@@ -5,7 +5,8 @@ angular.module('leffenloffenApp')
     $scope.erhe = '';
     $scope.showEvents = function(){
         var ID = null;
-        
+        var moviesArray = [];
+        var scheduleArray = [];
         if (teatteriService.locate == true){
             var request1 = ajaxFactory.getCity(teatteriService.lat, teatteriService.lon);
             request1.then(function(response){
@@ -14,6 +15,7 @@ angular.module('leffenloffenApp')
                 var code = response.data.results[2].address_components[0].long_name;
                 console.log(code+','+city);
                 teatteriService.setVariable('locate', false);
+                $scope.clicked = true;
                 switch(city){
                     case 'Helsinki':
                         ID = '1002';
@@ -82,57 +84,122 @@ angular.module('leffenloffenApp')
                         ID = '1013';
                         $scope.teatteriName = city;
                         break;
-
                     default:
                         ID = null;
                         $scope.teatteriName = 'Kaupungissasi ei ole Finnkinoa ;__;';
-                };
+                }
+                console.log(ID);
             var request = ajaxFactory.getMovies(ID);
             request.then(function(response){
                 // tee vastauksella jotain
+                /* VANHA TOIMIVA LAUSE
                 $scope.eventsArray = response.data;
                 console.log(response.data);
                 $scope.clicked = true;
+                */
+                moviesArray = response.data;
+
+            var request3 = ajaxFactory.getSchedule(ID);
+            request3.then(function(response){
  
+                scheduleArray = response.data.Shows;
+              });
+            var eventsArray = [];
+   
+            var dada = function(){
+
+                for (var i=0; i < scheduleArray.Show.length; i++) {
+                
+                    for (var j=0; j < moviesArray.Event.length; j++) {
+                        if ( moviesArray.Event[j].ID == scheduleArray.Show[i].EventID ) {
+                            eventsArray.push( moviesArray.Event[j] );
+                        }              
+                    }
+                }
+                var seen = {};
+                //You can filter based on Id or Name based on the requirement
+                var uniqueEvents = eventsArray.filter(function(item){
+                    if(seen.hasOwnProperty(item.ID)){
+                        return false;
+                    }else{
+                        seen[item.ID] = true;
+                        return true;
+                    }
+                });
+                $scope.eventsArray = uniqueEvents;
+                console.log($scope.clicked);
+
+            };
+            setTimeout(function() { dada(); }, 2000);
+
               }, function(error){
                 // tee virheellä jotain
                 console.log(error.data);
             });
+
+
+
             }
    
         )}
-        else {
-            console.log(teatteriService.area.ID);
+        else{
             var request = ajaxFactory.getMovies(teatteriService.area.ID);
             request.then(function(response){
                 // tee vastauksella jotain
+                /* VANHA TOIMIVA LAUSE
                 $scope.eventsArray = response.data;
                 console.log(response.data);
                 $scope.clicked = true;
-                $scope.teatteriName = teatteriService.area.Name;
-                /*
-                // To store a value
-                var loggedIn = JSON.stringify(response.data);   
-                window.localStorage.setItem('user', loggedIn);
                 */
+                $scope.teatteriName = teatteriService.area.Name;
+                moviesArray = response.data;
+                console.log(moviesArray.Event[0].ID);
+
+            var request3 = ajaxFactory.getSchedule(ID);
+            request3.then(function(response){
+ 
+                scheduleArray = response.data.Shows;
+                console.log(scheduleArray.Show.length);
+              });
+            var eventsArray = [];
+   
+            var dada = function(){
+
+                for (var i=0; i < scheduleArray.Show.length; i++) {
+                
+                    for (var j=0; j < moviesArray.Event.length; j++) {
+                        if ( moviesArray.Event[j].ID == scheduleArray.Show[i].EventID ) {
+                            eventsArray.push( moviesArray.Event[j] );
+                        }              
+                    }
+                }
+                var seen = {};
+                //You can filter based on Id or Name based on the requirement
+                var uniqueEvents = eventsArray.filter(function(item){
+                    if(seen.hasOwnProperty(item.ID)){
+                        return false;
+                    }else{
+                        seen[item.ID] = true;
+                        return true;
+                    }
+                });
+                $scope.eventsArray = uniqueEvents;
+                $scope.clicked = true;
+                console.log($scope.clicked);
+
+            };
+            setTimeout(function() { dada(); }, 2000);
+
               }, function(error){
                 // tee virheellä jotain
                 console.log(error.data);
             });
-        };
+
+        }
+        
         
     };
 
     teatteriService.setVariable('showEvents', $scope.showEvents);
-
-    
-
-    $scope.slide = function (dir) {
-    $('#slider').carousel(dir);
-    };
-    if (teatteriService.area=null){
-        $scope.erhe = true;
-    };
-
 
   });

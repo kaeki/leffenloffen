@@ -24,8 +24,11 @@ angular.module('leffenloffenApp')
     $scope.showTheatres();
     //$scope.showEvents = teatteriService.showEvents;
     $scope.showEvents = function(){
-        console.log(teatteriService);
         teatteriService.showEvents();
+        console.log(teatteriService);
+    };
+    $scope.showLocationEvents = function(){
+        teatteriService.showLocationEvents();
     };
     $scope.showSelectValue = function(mySelect) {
         teatteriService.area = JSON.parse(mySelect);
@@ -37,13 +40,14 @@ angular.module('leffenloffenApp')
             navigator.geolocation.getCurrentPosition(showPosition);
 
         } else {
-            console.log("Geolocation is not supported by this browser.");
+            $scope.fail = true;
         }
     };
     var showPosition = function(position) {
         teatteriService.setVariable('lat', position.coords.latitude);
         teatteriService.setVariable('lon', position.coords.longitude);
         teatteriService.setVariable('locate', true);
+        $scope.locate = teatteriService.locate;
         console.log(teatteriService.lat+", "+teatteriService.lon);
     };
 });

@@ -2,17 +2,22 @@
 <div class="row">
   <div class="col-xs-12">
       <div class="form-group">
-        <label class="col-xs-3 control-label">Valitse Teatteri</label>
-        <div class="col-xs-7 selectContainer">
+        <label class="col-xs-4 control-label">Valitse Teatteri</label>
+        <div class="col-xs-8 selectContainer">
             <select class="form-control" ng-model="mySelect" ng-change="showSelectValue(mySelect)">
                 <option ng-repeat="x in tArray.TheatreArea" value="{{x}}">{{x.Name}}</option>
             </select>
         </div>
-        <button class="btn btn-inverse" ng-click="showEvents()">Hae</button>
     </div>
   </div>
-  <div class="col-xs-12">
-    <button class="btn btn-block btn-inverse" ng-click="getLocation()">Paikanna sijaintini</button>
-  </div>
 </div>
-
+<div class="col-xs-12">
+    <button class="btn btn-block btn-inverse" ng-click="getLocation();">Paikanna sijaintini <span ng-show="locate" ng-hide="!locate"class="glyphicon glyphicon-ok
+"></span><span ng-show="fail" class="glyphicon glyphicon-remove"> Sijainti ei käytettävissä</span></button>
+</div>
+<br>
+<br>
+<div class="col-xs-12">
+  <button class="btn btn-block btn-inverse" ng-click="showEvents()">Hae</button>
+</div>
+<p style="font-size: 10px; text-align: center;" >Jos elokuvat eivät tule näkyviin paina Hae uudestaan</p>
